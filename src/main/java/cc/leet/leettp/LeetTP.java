@@ -2,6 +2,7 @@ package cc.leet.leettp;
 
 import cc.leet.leettp.command.HomeCommand;
 import cc.leet.leettp.command.HomesCommand;
+import cc.leet.leettp.command.SetHomeCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cn.nukkit.plugin.PluginBase;
@@ -33,6 +34,7 @@ public class LeetTP extends PluginBase {
         // Register commands.
         getServer().getCommandMap().register("home", new HomeCommand(plugin));
         getServer().getCommandMap().register("homes", new HomesCommand(plugin));
+        getServer().getCommandMap().register("sethome", new SetHomeCommand(plugin));
 
     }
 
