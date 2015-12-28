@@ -33,14 +33,14 @@ public class HomeCommand extends Command {
         if(cooldown.containsKey(sender.getName())) {
             long time = System.currentTimeMillis() - cooldown.get(sender.getName());
             if(time < homeManager.getCooldown()) {
-                sender.sendMessage(plugin.getMessages().cooldownWait((int)(cooldown.get(sender.getName()) - time) / 1000));
+                sender.sendMessage(plugin.getMessages().cooldownWait((int)(homeManager.getCooldown() - time) / 1000));
                 return true;
             }
         }
 
         Home home;
         // Default to "home" if nothing is specified.
-        if(args.length < 1 && homeManager.getHome(sender.getName(), "home") != null) {
+        if(args.length < 1) {
             home = homeManager.getHome(sender.getName(), "home");
         } else {
             if(args[0].isEmpty()) {
@@ -54,7 +54,10 @@ public class HomeCommand extends Command {
             home = homeManager.getHome(sender.getName(), args[0]);
         }
 
-        if(home == null) return false;
+        if(home == null) {
+            sender.sendMessage(plugin.getMessages().homeNotExists());
+            return true;
+        }
 
         // Check if level is loaded.
         if(!plugin.getServer().isLevelLoaded(home.getWorld())) {

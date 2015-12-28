@@ -105,6 +105,8 @@ public class HomeManager {
             }
         }
 
+        file.save();
+
     }
 
     /**
@@ -127,7 +129,7 @@ public class HomeManager {
      * Attempts to get all homes
      * by the target player.
      *
-     * @param player Targer player
+     * @param player Target player
      * @return Home
      */
     public Map<String, Home> getHomes(String player) {
@@ -148,7 +150,8 @@ public class HomeManager {
         home = home.toLowerCase();
         if(!homes.containsKey(player) || !homes.get(player).containsKey(home)) return false;
         homes.get(player).remove(home);
-        return homes.get(player).containsKey(home);
+        file.removeNested(player + "." + home);
+        return !homes.get(player).containsKey(home);
     }
 
     /**

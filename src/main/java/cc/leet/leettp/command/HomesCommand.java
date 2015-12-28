@@ -33,7 +33,11 @@ public class HomesCommand extends Command {
         boolean color = true;
 
         if(homes == null) {
-            message.append(TextFormat.GRAY + "You have no homes.");
+            message.append(TextFormat.GRAY + "You have no homes.  ");
+        } else if(homes.size() == 0) {
+            if(homes.size() == 0) {
+                message.append(TextFormat.GRAY + "You have no homes.  ");
+            }
         } else {
             for(Map.Entry<String, Home> entry : homes.entrySet()) {
                 message.append((color ? TextFormat.WHITE : TextFormat.GRAY)).append(entry.getKey()).append(", ");

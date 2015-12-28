@@ -30,7 +30,7 @@ public class SetHomeCommand extends Command {
         String name;
 
         // Default to "home" if nothing is specified.
-        if(args.length < 1 && !homeManager.getHomes(sender.getName()).containsKey("home")) {
+        if(args.length < 1) {
             name = "home";
         } else {
             name = args[0];
