@@ -31,8 +31,8 @@ public class HomeCommand extends Command {
         }
 
         if(cooldown.containsKey(sender.getName())) {
-            long time = System.currentTimeMillis();
-            if(time < cooldown.get(sender.getName())) {
+            long time = System.currentTimeMillis() - cooldown.get(sender.getName());
+            if(time < homeManager.getCooldown()) {
                 sender.sendMessage(plugin.getMessages().cooldownWait((int)(cooldown.get(sender.getName()) - time) / 1000));
                 return true;
             }

@@ -1,5 +1,6 @@
 package cc.leet.leettp;
 
+import cc.leet.leettp.command.DelHomeCommand;
 import cc.leet.leettp.command.HomeCommand;
 import cc.leet.leettp.command.HomesCommand;
 import cc.leet.leettp.command.SetHomeCommand;
@@ -35,6 +36,7 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("home", new HomeCommand(plugin));
         getServer().getCommandMap().register("homes", new HomesCommand(plugin));
         getServer().getCommandMap().register("sethome", new SetHomeCommand(plugin));
+        getServer().getCommandMap().register("delhome", new DelHomeCommand(plugin));
 
     }
 

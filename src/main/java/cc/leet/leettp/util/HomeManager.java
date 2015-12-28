@@ -17,7 +17,7 @@ public class HomeManager {
 
     private Config file;
 
-    private double cooldown;
+    private long cooldown;
 
     public boolean bedSetHome;
 
@@ -166,7 +166,7 @@ public class HomeManager {
         return homes.get(player).containsKey(home.getName().toLowerCase());
     }
 
-    public double getCooldown() {
+    public Long getCooldown() {
         return cooldown;
     }
 
