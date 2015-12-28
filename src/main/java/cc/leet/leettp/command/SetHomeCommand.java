@@ -36,6 +36,11 @@ public class SetHomeCommand extends Command {
             name = args[0];
         }
 
+        if(name.isEmpty()) {
+            sender.sendMessage(plugin.getMessages().homeNameMissing());
+            return true;
+        }
+
         Location location = ((Player) sender).getLocation();
 
         Home home = new Home(

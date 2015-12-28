@@ -43,6 +43,10 @@ public class HomeCommand extends Command {
         if(args.length < 1 && homeManager.getHome(sender.getName(), "home") != null) {
             home = homeManager.getHome(sender.getName(), "home");
         } else {
+            if(args[0].isEmpty()) {
+                sender.sendMessage(plugin.getMessages().homeNameMissing());
+                return true;
+            }
             if(homeManager.getHome(sender.getName(), args[0]) == null) {
                 sender.sendMessage(plugin.getMessages().homeNotExists());
                 return true;
