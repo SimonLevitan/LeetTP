@@ -1,5 +1,8 @@
 package cc.leet.leettp;
 
+import cc.leet.leettp.command.HomeCommand;
+import cc.leet.leettp.command.HomesCommand;
+import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cn.nukkit.plugin.PluginBase;
 
@@ -11,6 +14,7 @@ public class LeetTP extends PluginBase {
     private int version;
 
     private Messages messages;
+    private HomeManager homeManager;
 
     @Override
     public void onEnable() {
@@ -19,15 +23,22 @@ public class LeetTP extends PluginBase {
         if(!Files.exists(getDataFolder().toPath())) {
             if(!getDataFolder().mkdir()) getLogger().critical("Failed to create data folder!");
         }
+
         saveDefaultConfig();
         reloadSettings();
 
         messages = new Messages(plugin);
+        homeManager = new HomeManager(plugin);
+
+        // Register commands.
+        getServer().getCommandMap().register("home", new HomeCommand(plugin));
+        getServer().getCommandMap().register("homes", new HomesCommand(plugin));
+
     }
 
     @Override
     public void onDisable() {
-
+        homeManager.save();
     }
 
     /**
@@ -50,5 +61,14 @@ public class LeetTP extends PluginBase {
 
     public Messages getMessages() {
         return messages;
+    }
+
+    /**
+     * Gets the home manager.
+     *
+     * @return HomeManager
+     */
+    public HomeManager getHomeManager() {
+        return homeManager;
     }
 }
