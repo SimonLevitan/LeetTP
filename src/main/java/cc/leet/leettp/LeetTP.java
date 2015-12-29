@@ -4,6 +4,7 @@ import cc.leet.leettp.command.home.DelHomeCommand;
 import cc.leet.leettp.command.home.HomeCommand;
 import cc.leet.leettp.command.home.HomesCommand;
 import cc.leet.leettp.command.home.SetHomeCommand;
+import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
 import cc.leet.leettp.command.warp.WarpsCommand;
@@ -47,6 +48,7 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("warps", new WarpsCommand(plugin));
         getServer().getCommandMap().register("warp", new WarpCommand(plugin));
         getServer().getCommandMap().register("setwarp", new SetWarpCommand(plugin));
+        getServer().getCommandMap().register("delwarp", new DelWarpCommand(plugin));
 
     }
 
