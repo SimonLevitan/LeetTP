@@ -1,9 +1,9 @@
 package cc.leet.leettp;
 
-import cc.leet.leettp.command.DelHomeCommand;
-import cc.leet.leettp.command.HomeCommand;
-import cc.leet.leettp.command.HomesCommand;
-import cc.leet.leettp.command.SetHomeCommand;
+import cc.leet.leettp.command.home.DelHomeCommand;
+import cc.leet.leettp.command.home.HomeCommand;
+import cc.leet.leettp.command.home.HomesCommand;
+import cc.leet.leettp.command.home.SetHomeCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cc.leet.leettp.util.WarpManager;

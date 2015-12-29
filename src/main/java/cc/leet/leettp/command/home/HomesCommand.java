@@ -1,4 +1,4 @@
-package cc.leet.leettp.command;
+package cc.leet.leettp.command.home;
 
 import cc.leet.leettp.LeetTP;
 import cc.leet.leettp.data.Home;
