@@ -4,6 +4,7 @@ import cc.leet.leettp.command.home.DelHomeCommand;
 import cc.leet.leettp.command.home.HomeCommand;
 import cc.leet.leettp.command.home.HomesCommand;
 import cc.leet.leettp.command.home.SetHomeCommand;
+import cc.leet.leettp.command.warp.WarpsCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cc.leet.leettp.util.WarpManager;
@@ -40,6 +41,8 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("homes", new HomesCommand(plugin));
         getServer().getCommandMap().register("sethome", new SetHomeCommand(plugin));
         getServer().getCommandMap().register("delhome", new DelHomeCommand(plugin));
+
+        getServer().getCommandMap().register("warps", new WarpsCommand(plugin));
 
     }
 
@@ -78,5 +81,14 @@ public class LeetTP extends PluginBase {
      */
     public HomeManager getHomeManager() {
         return homeManager;
+    }
+
+    /**
+     * Gets the warp manager.
+     *
+     * @return WarpManager
+     */
+    public WarpManager getWarpManager() {
+        return warpManager;
     }
 }
