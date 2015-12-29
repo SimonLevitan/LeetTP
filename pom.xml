@@ -37,6 +37,7 @@
         </profile>
     </profiles>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <defaultGoal>clean resources:resources install</defaultGoal>
         <resources>
             <resource>
