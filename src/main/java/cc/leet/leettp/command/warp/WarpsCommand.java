@@ -45,8 +45,8 @@ public class WarpsCommand extends Command {
         StringBuilder publicWarps = new StringBuilder();
         color = true;
 
-        for(Map.Entry<String, Map<String, Warp>> entry : warpManager.getPublicWarps().entrySet()) {
-            if(entry.getValue().get(entry.getKey()).getOwner().equalsIgnoreCase(sender.getName())) continue;
+        for(Map.Entry<String, Warp> entry : warpManager.getPublicWarps().entrySet()) {
+            if(entry.getValue().getOwner().equalsIgnoreCase(sender.getName())) continue;
             publicWarps.append(color ? TextFormat.WHITE : TextFormat.GRAY).append(entry.getKey()).append(", ");
             color = !color;
         }

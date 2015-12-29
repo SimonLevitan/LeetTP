@@ -16,7 +16,7 @@ public class WarpManager {
     private LeetTP plugin;
 
     private Map<String, Map<String, Warp>> warps;
-    private Map<String, Map<String, Warp>> publicWarps;
+    private Map<String, Warp> publicWarps;
 
     private Config file;
 
@@ -86,11 +86,9 @@ public class WarpManager {
      * @return boolean
      */
     public boolean addPublic(Warp warp) {
-        if(!publicWarps.containsKey(warp.getName().toLowerCase())) {
-            publicWarps.put(warp.getName().toLowerCase(), new HashMap<>());
-        }
-        publicWarps.get(warp.getName().toLowerCase()).put(warp.getOwner(), warp);
-        return publicWarps.get(warp.getName().toLowerCase()).containsKey(warp.getOwner());
+        if(publicWarps.containsKey(warp.getName().toLowerCase())) return false;
+        publicWarps.put(warp.getName().toLowerCase(), warp);
+        return publicWarps.containsKey(warp.getName().toLowerCase());
     }
 
     /**
@@ -113,13 +111,9 @@ public class WarpManager {
     public boolean removePublic(String warp, String player) {
         warp = warp.toLowerCase();
         player = player.toLowerCase();
-        if(!publicWarps.containsKey(warp) || !publicWarps.get(warp).containsKey(player)) return false;
-        publicWarps.get(warp).remove(player);
-        if(publicWarps.get(warp).size() == 0) {
-            publicWarps.remove(warp);
-            return true;
-        }
-        return !publicWarps.get(warp).containsKey(player);
+        if(!publicWarps.containsKey(warp) || !publicWarps.get(warp).getOwner().equalsIgnoreCase(player)) return false;
+        publicWarps.remove(warp);
+        return !publicWarps.containsKey(warp);
     }
 
     /**
@@ -127,7 +121,7 @@ public class WarpManager {
      *
      * @return Map
      */
-    public Map<String, Map<String, Warp>> getPublicWarps() {
+    public Map<String, Warp> getPublicWarps() {
         return publicWarps;
     }
 
