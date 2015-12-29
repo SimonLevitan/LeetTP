@@ -21,6 +21,7 @@ public class WarpCommand extends Command {
         super("warp", "Teleports to a warp", "/warp [name] [-p]");
         this.plugin = plugin;
         this.warpManager = plugin.getWarpManager();
+        this.cooldown = new HashMap<>();
     }
 
     @Override
@@ -52,10 +53,21 @@ public class WarpCommand extends Command {
         if(isPublic) {
             Map<String, Warp> warps = warpManager.getPublicWarps();
             if(warps == null || !warps.containsKey(args[0].toLowerCase())) {
-                sender.sendMessage(plugin.getMessages().warpNotExists());
-                return true;
+
+                warps = warpManager.getWarps(sender.getName());
+
+                if(!warps.containsKey(args[0].toLowerCase())) {
+                    sender.sendMessage(plugin.getMessages().warpNotExists());
+                    return true;
+                }
+
+                warp = warps.get(args[0].toLowerCase());
+
+                isPublic = false;
+
+            } else {
+                warp = warps.get(args[0].toLowerCase());
             }
-            warp = warps.get(args[0].toLowerCase());
             // Let player know that a private warp
             if(!warp.getOwner().equalsIgnoreCase(sender.getName()) &&
                     warpManager.getWarps(sender.getName()).containsKey(args[0].toLowerCase())) {
