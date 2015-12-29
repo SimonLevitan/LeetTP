@@ -56,7 +56,7 @@ public class WarpCommand extends Command {
 
                 warps = warpManager.getWarps(sender.getName());
 
-                if(!warps.containsKey(args[0].toLowerCase())) {
+                if(warps == null || !warps.containsKey(args[0].toLowerCase())) {
                     sender.sendMessage(plugin.getMessages().warpNotExists());
                     return true;
                 }
