@@ -41,7 +41,8 @@ public class SetWarpCommand extends Command {
         }
 
         if(isPublic && warpManager.getPublicWarps().containsKey(args[0].toLowerCase()) ||
-                warpManager.getWarps(sender.getName()).containsKey(args[0].toLowerCase())) {
+                warpManager.getWarps(sender.getName()) != null &&
+                        warpManager.getWarps(sender.getName()).containsKey(args[0].toLowerCase())) {
             sender.sendMessage(plugin.getMessages().warpExists());
             return true;
         }
