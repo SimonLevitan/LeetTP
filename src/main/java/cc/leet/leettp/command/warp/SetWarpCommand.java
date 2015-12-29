@@ -35,10 +35,7 @@ public class SetWarpCommand extends Command {
 
         boolean isPublic = !ToolBox.implode(args, " ").contains("-p");
 
-        if(isPublic && !sender.hasPermission("leettp.warp.public")) {
-            sender.sendMessage(plugin.getMessages().noPermission());
-            return true;
-        }
+        if(isPublic && !sender.hasPermission("leettp.warp.public")) isPublic = false;
 
         if(isPublic && warpManager.getPublicWarps().containsKey(args[0].toLowerCase()) ||
                 warpManager.getWarps(sender.getName()) != null &&
@@ -68,7 +65,7 @@ public class SetWarpCommand extends Command {
             sender.sendMessage(plugin.getMessages().warpExists());
             return true;
         }
-        warpManager.addPublic(warp);
+        if(isPublic) warpManager.addPublic(warp);
 
         sender.sendMessage(plugin.getMessages().warpSet(warp.getName()));
 
