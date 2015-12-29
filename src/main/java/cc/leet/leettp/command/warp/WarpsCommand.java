@@ -56,6 +56,7 @@ public class WarpsCommand extends Command {
             sender.sendMessage(publicWarps.toString().substring(0, publicWarps.toString().length() - 2));
         }
 
+        if(!own.toString().equalsIgnoreCase("You have no warps.  ")) sender.sendMessage(TextFormat.YELLOW + "Your warps:");
         sender.sendMessage(own.toString().substring(0, own.toString().length() - 2));
 
         return true;
