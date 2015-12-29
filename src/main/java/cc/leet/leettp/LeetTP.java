@@ -6,6 +6,7 @@ import cc.leet.leettp.command.HomesCommand;
 import cc.leet.leettp.command.SetHomeCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
+import cc.leet.leettp.util.WarpManager;
 import cn.nukkit.plugin.PluginBase;
 
 import java.nio.file.Files;
@@ -17,6 +18,7 @@ public class LeetTP extends PluginBase {
 
     private Messages messages;
     private HomeManager homeManager;
+    private WarpManager warpManager;
 
     @Override
     public void onEnable() {
@@ -31,6 +33,7 @@ public class LeetTP extends PluginBase {
 
         messages = new Messages(plugin);
         homeManager = new HomeManager(plugin);
+        warpManager = new WarpManager(plugin);
 
         // Register commands.
         getServer().getCommandMap().register("home", new HomeCommand(plugin));
@@ -43,6 +46,7 @@ public class LeetTP extends PluginBase {
     @Override
     public void onDisable() {
         homeManager.save();
+        warpManager.save();
     }
 
     /**
