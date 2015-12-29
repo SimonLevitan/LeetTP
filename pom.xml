@@ -10,9 +10,9 @@
     </properties>
     <repositories>
         <repository>
-            <id>mengcraft-repo</id>
-            <name>Mengcraft repository</name>
-            <url>http://ci.mengcraft.com:8080/plugin/repository/everything/</url>
+            <id>projectinfinity-repo</id>
+            <name>projectinfinity repository</name>
+            <url>http://ci.regularbox.com/plugin/repository/everything/</url>
         </repository>
     </repositories>
     <dependencies>
