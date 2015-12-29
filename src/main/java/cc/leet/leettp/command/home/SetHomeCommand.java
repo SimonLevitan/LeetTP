@@ -33,7 +33,7 @@ public class SetHomeCommand extends Command {
         if(args.length < 1) {
             name = "home";
         } else {
-            name = args[0];
+            name = args[0].toLowerCase();
         }
 
         if(name.isEmpty()) {
