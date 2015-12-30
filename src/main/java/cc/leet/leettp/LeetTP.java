@@ -6,6 +6,7 @@ import cc.leet.leettp.command.home.HomesCommand;
 import cc.leet.leettp.command.home.SetHomeCommand;
 import cc.leet.leettp.command.spawn.SetSpawnCommand;
 import cc.leet.leettp.command.spawn.SpawnCommand;
+import cc.leet.leettp.command.teleport.BackCommand;
 import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
@@ -13,9 +14,13 @@ import cc.leet.leettp.command.warp.WarpsCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cc.leet.leettp.util.WarpManager;
+import cn.nukkit.level.Location;
+import cn.nukkit.level.Position;
 import cn.nukkit.plugin.PluginBase;
 
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LeetTP extends PluginBase {
 
@@ -26,9 +31,12 @@ public class LeetTP extends PluginBase {
     private HomeManager homeManager;
     private WarpManager warpManager;
 
+    public Map<String, Position> deaths;
+
     @Override
     public void onEnable() {
         plugin = this;
+        deaths = new HashMap<>();
 
         if(!Files.exists(getDataFolder().toPath())) {
             if(!getDataFolder().mkdir()) getLogger().critical("Failed to create data folder!");
@@ -54,6 +62,8 @@ public class LeetTP extends PluginBase {
 
         getServer().getCommandMap().register("spawn", new SpawnCommand(plugin));
         getServer().getCommandMap().register("setspawn", new SetSpawnCommand(plugin));
+
+        getServer().getCommandMap().register("back", new BackCommand(plugin));
 
     }
 
