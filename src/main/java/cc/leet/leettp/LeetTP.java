@@ -8,6 +8,7 @@ import cc.leet.leettp.command.spawn.SetSpawnCommand;
 import cc.leet.leettp.command.spawn.SpawnCommand;
 import cc.leet.leettp.command.teleport.BackCommand;
 import cc.leet.leettp.command.teleport.TpToggleCommand;
+import cc.leet.leettp.command.teleport.TpaCommand;
 import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
@@ -67,6 +68,7 @@ public class LeetTP extends PluginBase {
 
         getServer().getCommandMap().register("back", new BackCommand(plugin));
         getServer().getCommandMap().register("tptoggle",new TpToggleCommand(plugin));
+        getServer().getCommandMap().register("TpaCommand",new TpaCommand(plugin));
 
     }
 
