@@ -1,6 +1,6 @@
 version: 1
 
-tpa:
+tp:
   cooldown: 30
 
 home:
