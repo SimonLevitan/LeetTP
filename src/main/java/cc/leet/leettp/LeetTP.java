@@ -4,6 +4,8 @@ import cc.leet.leettp.command.home.DelHomeCommand;
 import cc.leet.leettp.command.home.HomeCommand;
 import cc.leet.leettp.command.home.HomesCommand;
 import cc.leet.leettp.command.home.SetHomeCommand;
+import cc.leet.leettp.command.spawn.SetSpawnCommand;
+import cc.leet.leettp.command.spawn.SpawnCommand;
 import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
@@ -18,7 +20,7 @@ import java.nio.file.Files;
 public class LeetTP extends PluginBase {
 
     private static LeetTP plugin;
-    private int version;
+    //private int version;
 
     private Messages messages;
     private HomeManager homeManager;
@@ -50,6 +52,9 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("setwarp", new SetWarpCommand(plugin));
         getServer().getCommandMap().register("delwarp", new DelWarpCommand(plugin));
 
+        getServer().getCommandMap().register("spawn", new SpawnCommand(plugin));
+        getServer().getCommandMap().register("setspawn", new SetSpawnCommand(plugin));
+
     }
 
     @Override
@@ -64,7 +69,7 @@ public class LeetTP extends PluginBase {
      */
     public void reloadSettings() {
         reloadConfig();
-        this.version = getConfig().get("version", 1);
+        //this.version = getConfig().get("version", 1);
     }
 
     /**
