@@ -7,14 +7,15 @@ import cc.leet.leettp.command.home.SetHomeCommand;
 import cc.leet.leettp.command.spawn.SetSpawnCommand;
 import cc.leet.leettp.command.spawn.SpawnCommand;
 import cc.leet.leettp.command.teleport.BackCommand;
+import cc.leet.leettp.command.teleport.TpToggleCommand;
 import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
 import cc.leet.leettp.command.warp.WarpsCommand;
 import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
+import cc.leet.leettp.util.TeleportManager;
 import cc.leet.leettp.util.WarpManager;
-import cn.nukkit.level.Location;
 import cn.nukkit.level.Position;
 import cn.nukkit.plugin.PluginBase;
 
@@ -30,6 +31,7 @@ public class LeetTP extends PluginBase {
     private Messages messages;
     private HomeManager homeManager;
     private WarpManager warpManager;
+    private TeleportManager teleportManager;
 
     public Map<String, Position> deaths;
 
@@ -64,6 +66,7 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("setspawn", new SetSpawnCommand(plugin));
 
         getServer().getCommandMap().register("back", new BackCommand(plugin));
+        getServer().getCommandMap().register("tptoggle",new TpToggleCommand(plugin));
 
     }
 
@@ -111,5 +114,14 @@ public class LeetTP extends PluginBase {
      */
     public WarpManager getWarpManager() {
         return warpManager;
+    }
+
+    /**
+     * Gets the teleport manager.
+     *
+     * @return TeleportManager
+     */
+    public TeleportManager getTeleportManager() {
+        return teleportManager;
     }
 }
