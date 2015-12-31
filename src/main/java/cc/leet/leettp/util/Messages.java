@@ -40,6 +40,7 @@ public class Messages {
     private String tp_not_allowed;
     private String tp_request_sent;
     private String tp_to_received;
+    private String tp_here_received;
     private String tp_status_changed;
     private String tp_no_request;
     private String tp_not_exists;
@@ -87,6 +88,7 @@ public class Messages {
         tp_not_allowed = plugin.getConfig().getNested("messages.error.tp-not-allowed", "%red%Your target does not allow teleportation requests.");
         tp_request_sent = plugin.getConfig().getNested("messages.error.tp-request-sent", "%green%Sent teleportation request to {0}.");
         tp_to_received = plugin.getConfig().getNested("messages.notify.tp-to-received", "%yellow%{0} has asked to teleport to you, type %aqua%/tpaccept {1}");
+        tp_here_received = plugin.getConfig().getNested("messages.notify.tp-here-received", "%yellow%You were asked to teleport to {0}, type %aqua%/tpaccept {1}");
         tp_status_changed = plugin.getConfig().getNested("messages.success.tp-status-changed", "%green%You {0} allow teleportation requests.");
         tp_no_request = plugin.getConfig().getNested("messages.error.tp-no-request", "%red%You do not have any teleportation requests.");
         tp_not_exists = plugin.getConfig().getNested("messages.error.tp-not-exists", "%red%You have no requests by that player.");
@@ -227,6 +229,10 @@ public class Messages {
 
     public String tpToReceived(String sender) {
         return parse(tp_to_received, sender);
+    }
+
+    public String tpHereReceived(String sender) {
+        return parse(tp_here_received, sender);
     }
 
     public String tpStatusChanged(String status) {

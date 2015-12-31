@@ -9,6 +9,7 @@ import cc.leet.leettp.command.spawn.SpawnCommand;
 import cc.leet.leettp.command.teleport.BackCommand;
 import cc.leet.leettp.command.teleport.TpToggleCommand;
 import cc.leet.leettp.command.teleport.TpaCommand;
+import cc.leet.leettp.command.teleport.TpaHereCommand;
 import cc.leet.leettp.command.warp.DelWarpCommand;
 import cc.leet.leettp.command.warp.SetWarpCommand;
 import cc.leet.leettp.command.warp.WarpCommand;
@@ -51,6 +52,7 @@ public class LeetTP extends PluginBase {
         messages = new Messages(plugin);
         homeManager = new HomeManager(plugin);
         warpManager = new WarpManager(plugin);
+        teleportManager = new TeleportManager(plugin);
 
         // Register commands.
         getServer().getCommandMap().register("home", new HomeCommand(plugin));
@@ -68,7 +70,8 @@ public class LeetTP extends PluginBase {
 
         getServer().getCommandMap().register("back", new BackCommand(plugin));
         getServer().getCommandMap().register("tptoggle",new TpToggleCommand(plugin));
-        getServer().getCommandMap().register("TpaCommand",new TpaCommand(plugin));
+        getServer().getCommandMap().register("tpa",new TpaCommand(plugin));
+        getServer().getCommandMap().register("tpahere",new TpaHereCommand(plugin));
 
     }
 

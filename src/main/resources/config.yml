@@ -54,3 +54,4 @@ messages:
   notify:
     warp-private-exists: "%yellow%A private warp with the same name exists, add '-p' to warp to it."
     tp-to-received: "%yellow%{0} has asked to teleport to you, type %aqua%/tpaccept {1}"
+    tp-here-received: "%yellow%You were asked to teleport to {0}, type %aqua%/tpaccept {1}"
