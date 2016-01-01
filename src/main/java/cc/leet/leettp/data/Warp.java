@@ -19,8 +19,8 @@ public class Warp {
     private Location location;
 
     public Warp(String name, String owner, String world, double x, double y, double z, double yaw, double pitch, boolean isPublic) {
-        this.name = name;
-        this.owner = owner;
+        this.name = name.toLowerCase();
+        this.owner = owner.toLowerCase();
         this.world = world;
         this.x = x;
         this.y = y;

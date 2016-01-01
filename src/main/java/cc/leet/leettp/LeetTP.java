@@ -15,7 +15,7 @@ import cc.leet.leettp.util.HomeManager;
 import cc.leet.leettp.util.Messages;
 import cc.leet.leettp.util.TeleportManager;
 import cc.leet.leettp.util.WarpManager;
-import cn.nukkit.level.Position;
+import cn.nukkit.level.Location;
 import cn.nukkit.plugin.PluginBase;
 
 import java.nio.file.Files;
@@ -32,7 +32,7 @@ public class LeetTP extends PluginBase {
     private WarpManager warpManager;
     private TeleportManager teleportManager;
 
-    public Map<String, Position> deaths;
+    public Map<String, Location> deaths;
 
     @Override
     public void onEnable() {
@@ -50,6 +50,8 @@ public class LeetTP extends PluginBase {
         homeManager = new HomeManager(plugin);
         warpManager = new WarpManager(plugin);
         teleportManager = new TeleportManager(plugin);
+
+        getServer().getPluginManager().registerEvents(new TPListener(plugin), this);
 
         // Register commands.
         getServer().getCommandMap().register("home", new HomeCommand(plugin));
