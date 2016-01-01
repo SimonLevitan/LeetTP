@@ -62,7 +62,7 @@ public class TpDenyCommand extends Command {
         }
 
         if(!requests.containsKey(target.getName())) {
-            sender.sendMessage(plugin.getMessages().tpNoRequest());
+            sender.sendMessage(plugin.getMessages().tpNotExists());
             return true;
         }
 
