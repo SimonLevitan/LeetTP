@@ -70,6 +70,7 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("tpa",new TpaCommand(plugin));
         getServer().getCommandMap().register("tpahere",new TpaHereCommand(plugin));
         getServer().getCommandMap().register("tpdeny",new TpDenyCommand(plugin));
+        getServer().getCommandMap().register("tpaccept",new TpAcceptCommand(plugin));
 
     }
 

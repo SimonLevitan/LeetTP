@@ -11,13 +11,13 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class TpDenyCommand extends Command {
+public class TpAcceptCommand extends Command {
 
     private LeetTP plugin;
     private TeleportManager teleportManager;
 
-    public TpDenyCommand(LeetTP plugin) {
-        super("tpdeny", "Denies a teleportation request", "/tpdeny [player]");
+    public TpAcceptCommand(LeetTP plugin) {
+        super("tpaccept", "Accepts a teleportation request", "/tpaccept [name]");
         this.plugin = plugin;
         teleportManager = plugin.getTeleportManager();
     }
@@ -68,6 +68,29 @@ public class TpDenyCommand extends Command {
 
         teleport = requests.get(target.getName());
 
+        Player senderPlayer = plugin.getServer().getPlayer(teleport.getSender());
+
+        if(senderPlayer == null) {
+            sender.sendMessage(plugin.getMessages().tpNotOnline());
+            return true;
+        }
+
+        if(teleport.getType() == Teleport.TeleportType.TO) {
+
+            senderPlayer.teleport(((Player) sender).getPosition());
+
+            senderPlayer.sendMessage(plugin.getMessages().tpTpaSuccess(sender.getName()));
+            sender.sendMessage(plugin.getMessages().tpTpaTargetSuccess(senderPlayer.getName()));
+
+        } else {
+
+            ((Player) sender).teleport(senderPlayer.getPosition());
+
+            sender.sendMessage(plugin.getMessages().tpTpahereSuccess(senderPlayer.getName()));
+            senderPlayer.sendMessage(plugin.getMessages().tpTpahereTargetSuccess(senderPlayer.getName()));
+
+        }
+
         switch(teleportManager.removeRequest(sender.getName(), teleport.getSender(), teleport.getType())) {
 
             // No request by that player, shouldn't be possible to reach.
@@ -90,14 +113,10 @@ public class TpDenyCommand extends Command {
                 plugin.getLogger().alert("Type: " + teleport.getType().toString());
                 break;
 
-            // Success
-            case 1:
-                sender.sendMessage(plugin.getMessages().tpTargetRejected());
-                target.sendMessage(plugin.getMessages().tpRejected(sender.getName()));
-                break;
         }
 
         return true;
 
     }
+
 }
