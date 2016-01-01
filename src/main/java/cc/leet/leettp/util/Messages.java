@@ -228,7 +228,7 @@ public class Messages {
     }
 
     public String tpToReceived(String sender) {
-        return parse(tp_to_received, sender);
+        return parse(tp_to_received, sender, sender);
     }
 
     public String tpHereReceived(String sender) {
