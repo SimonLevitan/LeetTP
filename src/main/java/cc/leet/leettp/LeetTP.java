@@ -66,11 +66,13 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("setspawn", new SetSpawnCommand(plugin));
 
         getServer().getCommandMap().register("back", new BackCommand(plugin));
-        getServer().getCommandMap().register("tptoggle",new TpToggleCommand(plugin));
-        getServer().getCommandMap().register("tpa",new TpaCommand(plugin));
-        getServer().getCommandMap().register("tpahere",new TpaHereCommand(plugin));
-        getServer().getCommandMap().register("tpdeny",new TpDenyCommand(plugin));
-        getServer().getCommandMap().register("tpaccept",new TpAcceptCommand(plugin));
+        getServer().getCommandMap().register("tptoggle", new TpToggleCommand(plugin));
+        getServer().getCommandMap().register("tpa", new TpaCommand(plugin));
+        getServer().getCommandMap().register("tpahere", new TpaHereCommand(plugin));
+        getServer().getCommandMap().register("tpdeny", new TpDenyCommand(plugin));
+        getServer().getCommandMap().register("tpaccept", new TpAcceptCommand(plugin));
+        getServer().getCommandMap().register("tpo", new TpoCommand(plugin));
+        getServer().getCommandMap().register("tpohere", new TpoHereCommand(plugin));
 
     }
 
