@@ -49,7 +49,7 @@ public class TpoCommand extends Command {
             }
         }
 
-        ((Player) sender).teleport(target.getPosition());
+        ((Player) sender).teleport(target.getLocation());
         sender.sendMessage(plugin.getMessages().tpTpaSuccess(target.getName()));
 
         return true;

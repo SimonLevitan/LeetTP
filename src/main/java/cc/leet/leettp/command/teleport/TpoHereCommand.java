@@ -49,7 +49,7 @@ public class TpoHereCommand extends Command {
             }
         }
 
-        target.teleport(((Player) sender).getPosition());
+        target.teleport(((Player) sender).getLocation());
         sender.sendMessage(plugin.getMessages().tpTpahereSuccess(target.getName()));
 
         return true;
