@@ -18,7 +18,7 @@ public class TpaHereCommand extends Command {
     private TeleportManager teleportManager;
 
     public TpaHereCommand(LeetTP plugin) {
-        super("tpahere", "Asks a player to teleport to you", "/tpahere [player]");
+        super("tpahere", "Asks a player to teleport to you", "/tpahere [player]", new String[]{"tphere"});
         this.plugin = plugin;
         teleportManager = plugin.getTeleportManager();
     }

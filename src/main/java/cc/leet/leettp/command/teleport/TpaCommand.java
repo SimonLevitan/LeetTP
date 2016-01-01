@@ -18,7 +18,7 @@ public class TpaCommand extends Command {
     private TeleportManager teleportManager;
 
     public TpaCommand(LeetTP plugin) {
-        super("tpa", "Sends a request to teleport to a player", "/tpa [player]");
+        super("tpa", "Sends a request to teleport to a player", "/tpa [player]", new String[]{"tp"});
         this.plugin = plugin;
         teleportManager = plugin.getTeleportManager();
     }
