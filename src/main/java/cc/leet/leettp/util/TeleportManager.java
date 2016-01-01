@@ -35,7 +35,7 @@ public class TeleportManager {
 
     public boolean addRequest(String target, String sender, Teleport.TeleportType type) {
 
-        if(!requests.containsKey(sender)) {
+        if(!requests.containsKey(sender) || requests.get(target) == null) {
             requests.put(target, new HashMap<>());
         }
 
