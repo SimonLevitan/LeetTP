@@ -46,7 +46,8 @@ public class TPListener implements Listener {
 
         Map<String, Home> homes = homeManager.getHomes(event.getPlayer().getName());
 
-        if(!homes.containsKey("bed")) return;
+        if(homes == null || !homes.containsKey("bed")) return;
+
         event.getPlayer().getLocation();
 
         event.setRespawnPosition(homes.get("bed").getLocation());
