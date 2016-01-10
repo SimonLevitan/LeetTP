@@ -12,6 +12,7 @@ import cn.nukkit.event.player.PlayerBedEnterEvent;
 import cn.nukkit.event.player.PlayerDeathEvent;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerRespawnEvent;
+import cn.nukkit.item.Item;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.tile.Sign;
 import cn.nukkit.tile.Tile;
@@ -63,14 +64,10 @@ public class TPListener implements Listener {
 
     }
 
-    /*@EventHandler(priority = EventPriority.NORMAL)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onPlayerInteract(PlayerInteractEvent event) {
 
-        System.out.println(0);
-
         if(event.getBlock().getId() != 63 && event.getBlock().getId() != 68) return;
-
-        System.out.println(1);
 
         Tile tile = event.getBlock().getLevel().getTile(new Vector3(
                 event.getBlock().getX(),
@@ -90,13 +87,11 @@ public class TPListener implements Listener {
 
         Sign sign = (Sign) tile;
 
-        System.out.println(2);
-        System.out.println(sign.getText()[0]);
-
         // Only process further if the sign is actually containing text on line 2 and it is [WARP]!
         if(!sign.getText()[0].equalsIgnoreCase("[WARP]")) return;
 
-        System.out.println(3);
+        // Allow the user to destroy the sign.
+        if(event.getPlayer().isSneaking()) return;
 
         Map<String, Warp> warps = warpManager.getPublicWarps();
 
@@ -105,49 +100,36 @@ public class TPListener implements Listener {
             return;
         }
 
-        System.out.println(4);
-
         Warp warp = warps.get(sign.getText()[1].toLowerCase());
 
         event.getPlayer().teleport(warp.getLocation());
 
         event.getPlayer().sendMessage(plugin.getMessages().warpTeleported(warp.getName()));
 
-    }*/
+    }
 
-   /* @EventHandler(priority = EventPriority.NORMAL)
+   @EventHandler(priority = EventPriority.NORMAL)
     public void onSignChange(SignChangeEvent event) {
 
         if(!event.getPlayer().hasPermission("leettp.warp.public")) return;
 
-        if(event.getLines().length < 2 || !event.getLine(1).equalsIgnoreCase("[WARP]")) return;
+        if(event.getLines().length < 2 || !event.getLine(0).equalsIgnoreCase("[WARP]")) return;
 
         Map<String, Warp> warps = warpManager.getPublicWarps();
 
-        if(warps.containsKey(event.getLine(1).toLowerCase())) {
-            event.getPlayer().sendMessage(plugin.getMessages().warpExists());
+        if(!warps.containsKey(event.getLine(1).toLowerCase())) {
+            event.getPlayer().sendMessage(plugin.getMessages().warpNotExists());
+            event.getBlock().onBreak(new Item(257));
+            event.getBlock().getLevel().dropItem(new Vector3(
+                    event.getBlock().x,
+                    event.getBlock().y,
+                    event.getBlock().z
+            ), new Item(323));
             return;
         }
 
-        Warp warp = new Warp(
-                event.getLine(1),
-                event.getPlayer().getName(),
-                event.getPlayer().getLevel().getName(),
-                event.getPlayer().getX(),
-                event.getPlayer().getY(),
-                event.getPlayer().getZ(),
-                event.getPlayer().getYaw(),
-                event.getPlayer().getPitch(),
-                true
-        );
+        event.getPlayer().sendMessage(plugin.getMessages().warpSignCreated(event.getLine(1).toLowerCase()));
 
-        if(!warpManager.addPublic(warp)) {
-            event.getPlayer().sendMessage(plugin.getMessages().warpExists());
-            return;
-        }
-
-        event.getPlayer().sendMessage(plugin.getMessages().warpSet(warp.getName()));
-
-    } */
+    }
 
 }

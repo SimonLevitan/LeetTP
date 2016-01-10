@@ -25,6 +25,7 @@ public class Messages {
     private String home_teleported;
 
     private String warp_set;
+    private String warp_sign_created;
     private String warp_name_missing;
     private String warp_exists;
     private String warp_not_exists;
@@ -73,6 +74,7 @@ public class Messages {
         home_teleported = plugin.getConfig().getNested("messages.success.home-teleported", "%green%Welcome back to {0}");
 
         warp_set = plugin.getConfig().getNested("messages.success.warp-set", "%green%Warp set! Use /warp %aqua%{0} %green%to warp to it.");
+        warp_sign_created = plugin.getConfig().getNested("messages.success.warp-sign-created", "%green%Warp sign created, click to teleport to %aqua%{0}%green%.");
         warp_name_missing = plugin.getConfig().getNested("messages.error.warp-name-missing", "%red%Warp name is missing.");
         warp_exists = plugin.getConfig().getNested("messages.error.warp-exists", "%red%A warp with that name already exists.");
         warp_not_exists = plugin.getConfig().getNested("messages.error.warp-not-exists", "%red%Found no warp with that name.");
@@ -176,6 +178,10 @@ public class Messages {
 
     public String warpSet(String name) {
         return parse(warp_set, name);
+    }
+
+    public String warpSignCreated(String name) {
+        return parse(warp_sign_created, name);
     }
 
     public String warpNameMissing() {
