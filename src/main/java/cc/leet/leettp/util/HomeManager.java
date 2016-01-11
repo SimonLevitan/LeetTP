@@ -14,6 +14,9 @@ public class HomeManager {
     private LeetTP plugin;
 
     private Map<String, Map<String, Home>> homes;
+    private Map<String, Map<String, Home>> homesCopy;
+
+    private int homesHash;
 
     private Config file;
 
@@ -27,6 +30,8 @@ public class HomeManager {
         cooldown = plugin.getConfig().getNested("home.cooldown", 5) * 1000; // Convert to milliseconds.
         bedSetHome = plugin.getConfig().getNested("home.set-by-bed", true);
         load();
+        homesHash = homes.hashCode();
+        homesCopy = new HashMap<>(homes);
     }
 
     public void load() {
@@ -177,4 +182,13 @@ public class HomeManager {
         return new File(plugin.getDataFolder(), "homes.yml").exists();
     }
 
+    public boolean dataHasChanged() {
+        boolean isOutdated = homes.hashCode() != homesHash && !homes.equals(homesCopy);
+        if(isOutdated) {
+            homesHash = homes.hashCode();
+            homesCopy.clear();
+            homesCopy.putAll(homes);
+        }
+        return isOutdated;
+    }
 }

@@ -17,6 +17,9 @@ public class WarpManager {
 
     private Map<String, Map<String, Warp>> warps;
     private Map<String, Warp> publicWarps;
+    private Map<String, Map<String, Warp>> warpsCopy;
+
+    private int warpsHash;
 
     private Config file;
 
@@ -245,6 +248,16 @@ public class WarpManager {
         }
 
         file.save();
+    }
+
+    public boolean dataHasChanged() {
+        boolean isOutdated = warps.hashCode() != warpsHash && !warps.equals(warpsCopy);
+        if(isOutdated) {
+            warpsHash = warps.hashCode();
+            warpsCopy.clear();
+            warpsCopy.putAll(warps);
+        }
+        return isOutdated;
     }
 
 }

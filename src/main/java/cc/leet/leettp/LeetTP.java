@@ -76,6 +76,8 @@ public class LeetTP extends PluginBase {
         getServer().getCommandMap().register("tpo", new TpoCommand(plugin));
         getServer().getCommandMap().register("tpohere", new TpoHereCommand(plugin));
 
+        getServer().getScheduler().scheduleDelayedRepeatingTask(new SaveTask(plugin), 6000, 6000);
+
     }
 
     @Override
