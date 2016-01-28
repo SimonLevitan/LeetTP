@@ -52,6 +52,9 @@ public class Messages {
     private String tp_tpahere_target_success;
     private String tp_target_rejected;
     private String tp_rejected;
+    private String tpworld_name_missing;
+    private String tpworld_not_loaded;
+    private String tpworld_success;
 
     private String back_empty;
     private String back_teleported;
@@ -101,7 +104,9 @@ public class Messages {
         tp_tpahere_target_success = plugin.getConfig().getNested("messages.success.tp-tpahere-target-success", "%green%You were teleported to {0}.");
         tp_target_rejected = plugin.getConfig().getNested("messages.success.tp-target-rejected", "%green%Teleportation request has been rejected.");
         tp_rejected = plugin.getConfig().getNested("messages.error.tp-rejected", "%red%Your teleportation request made to {0} has been rejected.");
-
+        tpworld_name_missing = plugin.getConfig().getNested("messages.error.tpworld-name-missing", "%red%You need to specify a target world.");
+        tpworld_not_loaded = plugin.getConfig().getNested("messages.error.tpworld-not-loaded", "%red%Your target world is not loaded.");
+        tpworld_success = plugin.getConfig().getNested("messages.success.tpworld-success", "%green%You teleported to {0}");
         back_empty = plugin.getConfig().getNested("messages.error.back-empty", "%red%You have to die before using /back.");
         back_teleported = plugin.getConfig().getNested("messages.success.back-teleported", "%green%You returned to your last death location.");
 
@@ -278,6 +283,18 @@ public class Messages {
 
     public String tpRejected(String player) {
         return parse(tp_rejected, player);
+    }
+
+    public String tpWorldNameMissing() {
+        return parse(tpworld_name_missing);
+    }
+
+    public String tpWorldNotLoaded() {
+        return parse(tpworld_not_loaded);
+    }
+
+    public String tpWorldSuccess(String world) {
+        return parse(tpworld_success, world);
     }
 
     public String backEmpty() {

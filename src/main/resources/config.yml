@@ -34,6 +34,8 @@ messages:
     tp-not-online: "%red%You can only accept requests from online players."
     tp-rejected: "%red%Your teleportation request made to {0} has been rejected."
     back-empty: "%red%You have to die before using /back."
+    tpworld-name-missing: "%red%You have to specify a target world."
+    tpworld-not-loaded: "%red%Your target world is not loaded."
   success:
     home-set: "%green%Home set! Use /home %aqua%{0} %green%to return to it."
     home-deleted: "%green%Home successfully deleted!"
@@ -49,6 +51,7 @@ messages:
     tp-tpa-target-success: "%green%{0} was teleported to you."
     tp-tpahere-target-success: "%green%You were teleported to {0}."
     tp-target-rejected: "%green%Teleportation request has been rejected."
+    tpworld-success: "%green%You teleported to {0}"
     back-teleported: "%green%You returned to your last death location."
     spawn-set: "%green%Spawn location set."
     spawn-teleported: "%green%Teleported to spawn."
