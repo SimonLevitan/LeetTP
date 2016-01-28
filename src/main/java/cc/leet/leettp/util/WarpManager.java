@@ -29,6 +29,7 @@ public class WarpManager {
         this.plugin = plugin;
         warps = new HashMap<>();
         publicWarps = new HashMap<>();
+        warpsCopy = new HashMap<>();
         cooldown = plugin.getConfig().getNested("warp.cooldown", 5) * 1000; // Convert to milliseconds.
         load();
     }
