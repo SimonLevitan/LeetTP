@@ -27,8 +27,8 @@ public class HomeManager {
     public HomeManager(LeetTP plugin) {
         this.plugin = plugin;
         homes = new HashMap<>();
-        cooldown = plugin.getConfig().getNested("home.cooldown", 5) * 1000; // Convert to milliseconds.
-        bedSetHome = plugin.getConfig().getNested("home.set-by-bed", true);
+        cooldown = plugin.getConfig().get("home.cooldown", 5) * 1000; // Convert to milliseconds.
+        bedSetHome = plugin.getConfig().getBoolean("home.set-by-bed", true);
         load();
         homesHash = homes.hashCode();
         homesCopy = new HashMap<>(homes);
@@ -86,25 +86,25 @@ public class HomeManager {
 
                 Home home = lvl2.getValue();
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".name", home.getName().toLowerCase());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".world", home.getWorld());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".x", home.getX());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".y", home.getY());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".z", home.getZ());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".yaw", home.getYaw());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".pitch", home.getPitch());
 
             }
@@ -155,7 +155,7 @@ public class HomeManager {
         home = home.toLowerCase();
         if(!homes.containsKey(player) || !homes.get(player).containsKey(home)) return false;
         homes.get(player).remove(home);
-        file.removeNested(player + "." + home);
+        file.remove(player + "." + home);
         return !homes.get(player).containsKey(home);
     }
 

@@ -16,7 +16,7 @@ public class TeleportManager {
 
     public TeleportManager(LeetTP plugin) {
         this.plugin = plugin;
-        cooldown = plugin.getConfig().getNested("tp.cooldown", 30) * 1000; // Convert to milliseconds.
+        cooldown = plugin.getConfig().get("tp.cooldown", 30) * 1000; // Convert to milliseconds.
         requests = new HashMap<>();
         status = new HashMap<>();
         cooldowns = new HashMap<>();

@@ -30,7 +30,7 @@ public class WarpManager {
         warps = new HashMap<>();
         publicWarps = new HashMap<>();
         warpsCopy = new HashMap<>();
-        cooldown = plugin.getConfig().getNested("warp.cooldown", 5) * 1000; // Convert to milliseconds.
+        cooldown = plugin.getConfig().get("warp.cooldown", 5) * 1000; // Convert to milliseconds.
         load();
     }
 
@@ -173,7 +173,7 @@ public class WarpManager {
         if(warps.get(player).get(warp).isPublic()) removePublic(warp, player);
 
         warps.get(player).remove(warp);
-        file.removeNested(player + "." + warp);
+        file.remove(player + "." + warp);
 
         if(warps.get(player).size() == 0) {
             warps.remove(player);
@@ -218,31 +218,31 @@ public class WarpManager {
 
                 Warp warp = lvl2.getValue();
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".name", warp.getName().toLowerCase());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".owner", warp.getOwner().toLowerCase());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".world", warp.getWorld());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".x", warp.getX());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".y", warp.getY());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".z", warp.getZ());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".yaw", warp.getYaw());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".pitch", warp.getPitch());
 
-                file.setNested(lvl1.getKey().toLowerCase() + "." +
+                file.set(lvl1.getKey().toLowerCase() + "." +
                         lvl2.getKey().toLowerCase() + ".isPublic", warp.isPublic());
 
             }

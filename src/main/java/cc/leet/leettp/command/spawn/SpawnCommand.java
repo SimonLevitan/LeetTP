@@ -17,7 +17,7 @@ public class SpawnCommand extends Command {
         super("spawn", "Teleports to spawn", "/spawn");
         this.plugin = plugin;
         this.cooldown = new HashMap<>();
-        this.cdTime = plugin.getConfig().getNested("spawn.cooldown", 5) * 1000;
+        this.cdTime = plugin.getConfig().get("spawn.cooldown", 5) * 1000;
     }
 
     @Override

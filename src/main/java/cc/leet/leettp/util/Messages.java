@@ -65,53 +65,53 @@ public class Messages {
     public Messages(LeetTP plugin) {
         findColors();
 
-        no_permission = plugin.getConfig().getNested("messages.error.no-permission", "%red%You don't have permission to do that.");
-        cooldown_wait = plugin.getConfig().getNested("messages.error.cooldown-wait", "%red%You need to wait {0} second(s) before doing that.");
+        no_permission = plugin.getConfig().get("messages.error.no-permission", "%red%You don't have permission to do that.");
+        cooldown_wait = plugin.getConfig().get("messages.error.cooldown-wait", "%red%You need to wait {0} second(s) before doing that.");
 
-        home_exists = plugin.getConfig().getNested("messages.error.home-exists", "%red%A home with that name already exists.");
-        home_not_exists = plugin.getConfig().getNested("messages.error.home-not-exists", "%red%You don't have a home by that name.");
-        home_not_deleted = plugin.getConfig().getNested("messages.error.home-not-deleted", "%red%Failed to delete that home.");
-        home_name_missing = plugin.getConfig().getNested("messages.error.home-name-missing", "%red%You have to specify a name for your home.");
-        home_set = plugin.getConfig().getNested("messages.success.home-set", "%green%Home set! Use /home %aqua%{0} %green%to return to it.");
-        home_deleted = plugin.getConfig().getNested("messages.success.home-deleted", "%green%Home successfully deleted!");
-        home_teleported = plugin.getConfig().getNested("messages.success.home-teleported", "%green%Welcome back to {0}");
+        home_exists = plugin.getConfig().get("messages.error.home-exists", "%red%A home with that name already exists.");
+        home_not_exists = plugin.getConfig().get("messages.error.home-not-exists", "%red%You don't have a home by that name.");
+        home_not_deleted = plugin.getConfig().get("messages.error.home-not-deleted", "%red%Failed to delete that home.");
+        home_name_missing = plugin.getConfig().get("messages.error.home-name-missing", "%red%You have to specify a name for your home.");
+        home_set = plugin.getConfig().get("messages.success.home-set", "%green%Home set! Use /home %aqua%{0} %green%to return to it.");
+        home_deleted = plugin.getConfig().get("messages.success.home-deleted", "%green%Home successfully deleted!");
+        home_teleported = plugin.getConfig().get("messages.success.home-teleported", "%green%Welcome back to {0}");
 
-        warp_set = plugin.getConfig().getNested("messages.success.warp-set", "%green%Warp set! Use /warp %aqua%{0} %green%to warp to it.");
-        warp_sign_created = plugin.getConfig().getNested("messages.success.warp-sign-created", "%green%Warp sign created, click to teleport to %aqua%{0}%green%.");
-        warp_name_missing = plugin.getConfig().getNested("messages.error.warp-name-missing", "%red%Warp name is missing.");
-        warp_exists = plugin.getConfig().getNested("messages.error.warp-exists", "%red%A warp with that name already exists.");
-        warp_not_exists = plugin.getConfig().getNested("messages.error.warp-not-exists", "%red%Found no warp with that name.");
-        warp_deleted = plugin.getConfig().getNested("messages.success.warp-deleted", "%green%Warp successfully deleted!");
-        warp_not_deleted = plugin.getConfig().getNested("messages.error.warp-not-deleted", "%red%Failed to delete that warp.");
-        warp_private_exists = plugin.getConfig().getNested("messages.notify.warp-private-exists", "%yellow%A private warp with the same name exists, add '-p' to warp to it.");
-        warp_teleported = plugin.getConfig().getNested("messages.success.warp-teleported", "%green%Warped to {0}");
+        warp_set = plugin.getConfig().get("messages.success.warp-set", "%green%Warp set! Use /warp %aqua%{0} %green%to warp to it.");
+        warp_sign_created = plugin.getConfig().get("messages.success.warp-sign-created", "%green%Warp sign created, click to teleport to %aqua%{0}%green%.");
+        warp_name_missing = plugin.getConfig().get("messages.error.warp-name-missing", "%red%Warp name is missing.");
+        warp_exists = plugin.getConfig().get("messages.error.warp-exists", "%red%A warp with that name already exists.");
+        warp_not_exists = plugin.getConfig().get("messages.error.warp-not-exists", "%red%Found no warp with that name.");
+        warp_deleted = plugin.getConfig().get("messages.success.warp-deleted", "%green%Warp successfully deleted!");
+        warp_not_deleted = plugin.getConfig().get("messages.error.warp-not-deleted", "%red%Failed to delete that warp.");
+        warp_private_exists = plugin.getConfig().get("messages.notify.warp-private-exists", "%yellow%A private warp with the same name exists, add '-p' to warp to it.");
+        warp_teleported = plugin.getConfig().get("messages.success.warp-teleported", "%green%Warped to {0}");
 
-        world_not_loaded = plugin.getConfig().getNested("messages.error.world-not-loaded", "%red%Target world NOT loaded!");
+        world_not_loaded = plugin.getConfig().get("messages.error.world-not-loaded", "%red%Target world NOT loaded!");
 
-        tp_name_missing = plugin.getConfig().getNested("messages.error.tp-name-missing", "%red%You need to specify a target player.");
-        tp_request_exists = plugin.getConfig().getNested("messages.error.tp-request-exists", "%red%Your target already has a teleportation request from you.");
-        tp_not_allowed = plugin.getConfig().getNested("messages.error.tp-not-allowed", "%red%Your target does not allow teleportation requests.");
-        tp_request_sent = plugin.getConfig().getNested("messages.error.tp-request-sent", "%green%Sent teleportation request to {0}.");
-        tp_to_received = plugin.getConfig().getNested("messages.notify.tp-to-received", "%yellow%{0} has asked to teleport to you, type %aqua%/tpaccept {1}");
-        tp_here_received = plugin.getConfig().getNested("messages.notify.tp-here-received", "%yellow%You were asked to teleport to {0}, type %aqua%/tpaccept {1}");
-        tp_status_changed = plugin.getConfig().getNested("messages.success.tp-status-changed", "%green%You {0} allow teleportation requests.");
-        tp_no_request = plugin.getConfig().getNested("messages.error.tp-no-request", "%red%You do not have any teleportation requests.");
-        tp_not_exists = plugin.getConfig().getNested("messages.error.tp-not-exists", "%red%You have no requests by that player.");
-        tp_not_online = plugin.getConfig().getNested("messages.error.tp-not-online", "%red%You can only accept requests from online players.");
-        tp_tpa_success = plugin.getConfig().getNested("messages.success.tp-tpa-success", "%green%You teleported to {0}.");
-        tp_tpahere_success = plugin.getConfig().getNested("messages.success.tp-tpahere-success", "%green%You teleported {0} to you.");
-        tp_tpa_target_success = plugin.getConfig().getNested("messages.success.tp-tpa-target-success", "%green%{0} was teleported to you.");
-        tp_tpahere_target_success = plugin.getConfig().getNested("messages.success.tp-tpahere-target-success", "%green%You were teleported to {0}.");
-        tp_target_rejected = plugin.getConfig().getNested("messages.success.tp-target-rejected", "%green%Teleportation request has been rejected.");
-        tp_rejected = plugin.getConfig().getNested("messages.error.tp-rejected", "%red%Your teleportation request made to {0} has been rejected.");
-        tpworld_name_missing = plugin.getConfig().getNested("messages.error.tpworld-name-missing", "%red%You need to specify a target world.");
-        tpworld_not_loaded = plugin.getConfig().getNested("messages.error.tpworld-not-loaded", "%red%Your target world is not loaded.");
-        tpworld_success = plugin.getConfig().getNested("messages.success.tpworld-success", "%green%You teleported to {0}");
-        back_empty = plugin.getConfig().getNested("messages.error.back-empty", "%red%You have to die before using /back.");
-        back_teleported = plugin.getConfig().getNested("messages.success.back-teleported", "%green%You returned to your last death location.");
+        tp_name_missing = plugin.getConfig().get("messages.error.tp-name-missing", "%red%You need to specify a target player.");
+        tp_request_exists = plugin.getConfig().get("messages.error.tp-request-exists", "%red%Your target already has a teleportation request from you.");
+        tp_not_allowed = plugin.getConfig().get("messages.error.tp-not-allowed", "%red%Your target does not allow teleportation requests.");
+        tp_request_sent = plugin.getConfig().get("messages.error.tp-request-sent", "%green%Sent teleportation request to {0}.");
+        tp_to_received = plugin.getConfig().get("messages.notify.tp-to-received", "%yellow%{0} has asked to teleport to you, type %aqua%/tpaccept {1}");
+        tp_here_received = plugin.getConfig().get("messages.notify.tp-here-received", "%yellow%You were asked to teleport to {0}, type %aqua%/tpaccept {1}");
+        tp_status_changed = plugin.getConfig().get("messages.success.tp-status-changed", "%green%You {0} allow teleportation requests.");
+        tp_no_request = plugin.getConfig().get("messages.error.tp-no-request", "%red%You do not have any teleportation requests.");
+        tp_not_exists = plugin.getConfig().get("messages.error.tp-not-exists", "%red%You have no requests by that player.");
+        tp_not_online = plugin.getConfig().get("messages.error.tp-not-online", "%red%You can only accept requests from online players.");
+        tp_tpa_success = plugin.getConfig().get("messages.success.tp-tpa-success", "%green%You teleported to {0}.");
+        tp_tpahere_success = plugin.getConfig().get("messages.success.tp-tpahere-success", "%green%You teleported {0} to you.");
+        tp_tpa_target_success = plugin.getConfig().get("messages.success.tp-tpa-target-success", "%green%{0} was teleported to you.");
+        tp_tpahere_target_success = plugin.getConfig().get("messages.success.tp-tpahere-target-success", "%green%You were teleported to {0}.");
+        tp_target_rejected = plugin.getConfig().get("messages.success.tp-target-rejected", "%green%Teleportation request has been rejected.");
+        tp_rejected = plugin.getConfig().get("messages.error.tp-rejected", "%red%Your teleportation request made to {0} has been rejected.");
+        tpworld_name_missing = plugin.getConfig().get("messages.error.tpworld-name-missing", "%red%You need to specify a target world.");
+        tpworld_not_loaded = plugin.getConfig().get("messages.error.tpworld-not-loaded", "%red%Your target world is not loaded.");
+        tpworld_success = plugin.getConfig().get("messages.success.tpworld-success", "%green%You teleported to {0}");
+        back_empty = plugin.getConfig().get("messages.error.back-empty", "%red%You have to die before using /back.");
+        back_teleported = plugin.getConfig().get("messages.success.back-teleported", "%green%You returned to your last death location.");
 
-        spawn_set = plugin.getConfig().getNested("messages.success.spawn-set", "%green%Spawn location set.");
-        spawn_teleported = plugin.getConfig().getNested("messages.success.spawn-teleported", "%green%Teleported to spawn.");
+        spawn_set = plugin.getConfig().get("messages.success.spawn-set", "%green%Spawn location set.");
+        spawn_teleported = plugin.getConfig().get("messages.success.spawn-teleported", "%green%Teleported to spawn.");
 
     }
 
