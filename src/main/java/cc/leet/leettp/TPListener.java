@@ -14,8 +14,8 @@ import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerRespawnEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.math.Vector3;
-import cn.nukkit.tile.Sign;
-import cn.nukkit.tile.Tile;
+import cn.nukkit.blockentity.BlockEntity;
+import cn.nukkit.blockentity.BlockEntitySign;
 
 import java.util.Map;
 
@@ -69,14 +69,14 @@ public class TPListener implements Listener {
 
         if(event.getBlock().getId() != 63 && event.getBlock().getId() != 68) return;
 
-        Tile tile = event.getBlock().getLevel().getTile(new Vector3(
+        BlockEntity blockEntity = event.getBlock().getLevel().getBlockEntity(new Vector3(
                 event.getBlock().getX(),
                 event.getBlock().getY(),
                 event.getBlock().getZ()
         ));
 
         // Double check that tile is a sign.
-        if(!(tile instanceof Sign)) {
+        if(!(blockEntity instanceof BlockEntitySign)) {
             plugin.getLogger().error("Tile was not a instance of sign at X: " +
                     event.getBlock().getX() + " Y: " +
                     event.getBlock().getY() + " Z: " +
@@ -85,7 +85,7 @@ public class TPListener implements Listener {
             return;
         }
 
-        Sign sign = (Sign) tile;
+        BlockEntitySign sign = (BlockEntitySign) blockEntity;
 
         // Only process further if the sign is actually containing text on line 2 and it is [WARP]!
         if(!sign.getText()[0].equalsIgnoreCase("[WARP]")) return;
@@ -95,7 +95,7 @@ public class TPListener implements Listener {
 
         Map<String, Warp> warps = warpManager.getPublicWarps();
 
-        if(!warps.containsKey(((Sign) tile).getText()[1].toLowerCase())) {
+        if(!warps.containsKey(sign.getText()[1].toLowerCase())) {
             event.getPlayer().sendMessage(plugin.getMessages().warpNotExists());
             return;
         }
