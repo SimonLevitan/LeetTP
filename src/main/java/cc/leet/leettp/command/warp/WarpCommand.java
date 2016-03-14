@@ -68,7 +68,7 @@ public class WarpCommand extends Command {
             } else {
                 warp = warps.get(args[0].toLowerCase());
             }
-            // Let player know that a private warp
+            // Let player know that a private warp exists.
             if(!warp.getOwner().equalsIgnoreCase(sender.getName()) &&
                     warpManager.getWarps(sender.getName()).containsKey(args[0].toLowerCase())) {
                 privateExists = true;

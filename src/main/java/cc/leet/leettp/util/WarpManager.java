@@ -153,7 +153,7 @@ public class WarpManager {
      */
     public Map<String, Warp> getWarps(String player) {
         player = player.toLowerCase();
-        if(!warps.containsKey(player)) return null;
+        if(!warps.containsKey(player)) return new HashMap<>();
         return warps.get(player);
     }
 
