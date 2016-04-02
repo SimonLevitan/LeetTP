@@ -34,7 +34,7 @@ public class TpWorldCommand extends Command {
             return true;
         }
 
-        ((Player) sender).teleport(plugin.getServer().getLevelByName(world).getSpawnLocation());
+        ((Player) sender).teleport(plugin.getServer().getLevelByName(world).getSpawnLocation().getLocation());
 
         sender.sendMessage(plugin.getMessages().tpWorldSuccess(world));
 

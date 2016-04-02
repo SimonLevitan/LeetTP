@@ -77,7 +77,7 @@ public class TPListener implements Listener {
 
         // Double check that tile is a sign.
         if(!(blockEntity instanceof BlockEntitySign)) {
-            plugin.getLogger().error("Tile was not a instance of sign at X: " +
+            plugin.getLogger().error("BlockEntity was not a instance of sign at X: " +
                     event.getBlock().getX() + " Y: " +
                     event.getBlock().getY() + " Z: " +
                     event.getBlock().getZ()
