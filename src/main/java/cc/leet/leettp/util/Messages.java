@@ -5,6 +5,7 @@ import cn.nukkit.utils.TextFormat;
 
 import java.lang.reflect.Field;
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,16 +133,9 @@ public class Messages {
 
     public static void findColors() {
         colors = new HashMap<>();
-        Field[] declaredFields = TextFormat.class.getDeclaredFields();
-        for(Field field : declaredFields) {
-            if(java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
-                try {
-                    if(field.getName().equalsIgnoreCase("ESCAPE")) continue;
-                    colors.put(field.getName(), (String) TextFormat.class.getDeclaredField(field.getName()).get(String.class));
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
+        for(TextFormat format : TextFormat.values()) {
+            if(format.name().equalsIgnoreCase("ESCAPE")) continue;
+            colors.put(format.name(), format.toString());
         }
     }
 

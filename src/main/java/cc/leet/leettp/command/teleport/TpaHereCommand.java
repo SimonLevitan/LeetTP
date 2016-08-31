@@ -11,6 +11,7 @@ import cn.nukkit.utils.TextFormat;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.UUID;
 
 public class TpaHereCommand extends Command {
 
@@ -48,8 +49,8 @@ public class TpaHereCommand extends Command {
 
         if(target == null) {
             // Player was not found, let's check if he was tried auto-completed.
-            SortedMap<String, Player> players = new TreeMap<>(plugin.getServer().getOnlinePlayers());
-            for(Map.Entry<String, Player> entry : players.entrySet()) {
+            SortedMap<UUID, Player> players = new TreeMap<>(plugin.getServer().getOnlinePlayers());
+            for(Map.Entry<UUID, Player> entry : players.entrySet()) {
                 if(!entry.getValue().getName().substring(0, args[0].length()).equalsIgnoreCase(args[0])) continue;
                 target = entry.getValue();
                 break;
