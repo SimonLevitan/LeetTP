@@ -25,7 +25,7 @@ import java.util.Map;
 public class LeetTP extends PluginBase {
 
     private static LeetTP plugin;
-    //private int version;
+    private int version;
 
     private Messages messages;
     private HomeManager homeManager;
@@ -33,6 +33,7 @@ public class LeetTP extends PluginBase {
     private TeleportManager teleportManager;
 
     public Map<String, Location> deaths;
+    public boolean loadWorlds;
 
     @Override
     public void onEnable() {
@@ -93,7 +94,18 @@ public class LeetTP extends PluginBase {
      */
     public void reloadSettings() {
         reloadConfig();
-        //this.version = getConfig().get("version", 1);
+        // Assert config is up to date.
+        this.version = getConfig().get("version", 1);
+        // Update to v1.2.6. - Adds support for loading unloaded worlds.
+        if(this.version == 1) {
+            this.version = 2;
+            getConfig().set("version", 2);
+            getConfig().set("load-worlds", true);
+            saveConfig();
+            reloadConfig();
+        }
+
+        this.loadWorlds = getConfig().get("load-worlds", true);
     }
 
     /**

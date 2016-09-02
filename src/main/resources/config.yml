@@ -1,4 +1,6 @@
-version: 1
+version: 2
+
+load-worlds: true
 
 tp:
   cooldown: 30

@@ -61,8 +61,17 @@ public class HomeCommand extends Command {
 
         // Check if level is loaded.
         if(!plugin.getServer().isLevelLoaded(home.getWorld())) {
-            sender.sendMessage(plugin.getMessages().worldNotLoaded());
-            return true;
+            // Check if we should load the world.
+            if(!plugin.loadWorlds) {
+                sender.sendMessage(plugin.getMessages().worldNotLoaded());
+                return true;
+            } else {
+                // Attempt to load the world.
+                if(!plugin.getServer().loadLevel(home.getWorld())) {
+                    sender.sendMessage(plugin.getMessages().worldNotLoaded());
+                    return true;
+                }
+            }
         }
 
         ((Player) sender).teleport(home.getLocation());
