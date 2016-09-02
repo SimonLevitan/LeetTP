@@ -29,9 +29,19 @@ public class TpWorldCommand extends Command {
 
         String world = args[0];
 
+        // Check if level is loaded.
         if(!plugin.getServer().isLevelLoaded(world)) {
-            sender.sendMessage(plugin.getMessages().tpWorldNotLoaded());
-            return true;
+            // Check if we should load the world.
+            if(!plugin.loadWorlds) {
+                sender.sendMessage(plugin.getMessages().worldNotLoaded());
+                return true;
+            } else {
+                // Attempt to load the world.
+                if(!plugin.getServer().loadLevel(world)) {
+                    sender.sendMessage(plugin.getMessages().worldNotLoaded());
+                    return true;
+                }
+            }
         }
 
         ((Player) sender).teleport(plugin.getServer().getLevelByName(world).getSpawnLocation().getLocation());
